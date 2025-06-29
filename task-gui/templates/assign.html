@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}Assign Task{% endblock %}
+{% block content %}
+<h2>Assign Task to {{ user.full_name }}</h2>
+<form method="POST">
+  <div class="mb-3">
+    <label for="task" class="form-label">Task</label>
+    <textarea name="task" class="form-control" rows="3" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Assign</button>
+  <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
