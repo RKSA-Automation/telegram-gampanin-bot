@@ -1,3 +1,4 @@
-Flask
-SQLAlchemy
-PyMySQL
+flask
+sqlalchemy
+pymysql
+

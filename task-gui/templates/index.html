@@ -2,30 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Authorized Users</title>
+  <title>Sugúan Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="p-4">
-  <h1>Authorized Users with Suguan Entries</h1>
-  <div class="mt-4">
-    {% for user in users %}
-      <div class="card mb-3">
-        <div class="card-header">
-          {{ user.full_name }} (ID: {{ user.user_id }})
-        </div>
-        <div class="card-body">
-          {% if user.entries %}
-            <ul>
-              {% for entry in user.entries %}
-                <li>{{ entry.day }} - {{ entry.time }} - {{ entry.lokal }} - {{ entry.gampanin }} ({{ entry.language }})</li>
-              {% endfor %}
-            </ul>
-          {% else %}
-            <p>No entries.</p>
-          {% endif %}
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+<body class="container mt-5">
+  <h1 class="mb-4">📋 Sugúan Dashboard</h1>
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>User</th>
+        <th>Midweek (Wed & Thu)</th>
+        <th>Weekend (Sat & Sun)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in users %}
+      <tr>
+        <td>{{ entry.full_name }}</td>
+        <td>
+          {% for e in entry.midweek %}
+            <div>{{ e.day }}, {{ e.time }}, {{ e.lokal }}, {{ e.gampanin }}, {{ e.language }}</div>
+          {% endfor %}
+        </td>
+        <td>
+          {% for e in entry.weekend %}
+            <div>{{ e.day }}, {{ e.time }}, {{ e.lokal }}, {{ e.gampanin }}, {{ e.language }}</div>
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </body>
 </html>
